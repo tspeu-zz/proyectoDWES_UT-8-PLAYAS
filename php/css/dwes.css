@@ -1,0 +1,25 @@
+/* h1 {
+    margin-bottom: 0;
+} */
+
+#encabezado {
+    background-color: #0275d8;
+}
+
+#contenido {
+    background-color: #EEEEEE;
+    height: 600px;
+}
+
+
+
+.sel {
+    width: 200px !important;
+    height: 200px !important;
+    padding: 5% !important;
+    ;
+    text-align: center !important;
+    ;
+    font-family: 'Open Sans Condensed', sans-serif !important;
+    ;
+}
