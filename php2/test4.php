@@ -23,12 +23,12 @@
                     <a class='navbar-brand'> <img alt='Brand' src='img/ghost.png'></a>
                 </div>
                 <ul class='nav navbar-nav'>
-                    <li class='active'>
+                    <li class='nav-item active'>
                         <a href='#'> test4 PROYECTO_8 JM_B  <span class='sr-only'>(current)</span></a>
                     </li>
-                    <li><a href='test4.php'>LISTADO PLAYAS DESDE dB MYSQL</a> 
-                    <li><a href='altaplaya2.php'>ALTA PLAYA DESDE dB MYSQL</a></li>
-                    </li>
+                    <li class="nav-item"><a href='test4.php'>LISTADO PLAYAS DESDE dB MYSQL</a> </li>
+                    <li class="nav-item"><a href='altaplaya2.php'>ALTA PLAYA DESDE dB MYSQL</a></li>
+                    
                 </ul>
             </div>
     </nav>

@@ -55,12 +55,12 @@
             </button> -->
             <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
             <ul class='nav navbar-nav'>
-                <li class='nav-item '>
+                <li class='nav-item'>
                     <a href='../index.html'> PROYECTO UT-8 JM_B  <span class='sr-only'>(current)</span></a>
                 </li>
-                 <li class="nav-item"><a class="nav-link" href='lista.php'>LISTADO PLAYAS</a> 
+                 <li class="nav-item"><a class="nav-link" href='lista.php'>LISTADO PLAYAS</a> </li>
                 <li class="nav-item"><a class="nav-link" href='altaplaya2.php'>ALTA PLAYA </a></li>
-                </li>
+                
             </ul>
             <!-- </div> -->
         </div>
