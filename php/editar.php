@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	 <!-- Bootstrap core CSS -->
-	 <link href="css/bootstrap.min.css" rel="stylesheet">
+	 <link href="css/old/bootstrap.min.css" rel="stylesheet">
 
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
+
 	<link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/dwes.css">
@@ -19,91 +20,24 @@
 	<link type="image/x-icon" href="img/ghost.png" rel="shortcut icon" />
 	<!-- Template styles -->
     <style rel="stylesheet">
-        /* TEMPLATE STYLES */
-        /* Necessary for full page carousel*/
-
-        .full-height,
-        .full-height body,
-        .full-height header,
-        .full-height header .view, 
-        .full-height body .view {
-            height: 100%; 
-        } 
-
-        @media (max-width: 740px) {
-            .full-height,
-            .full-height body,
-            .full-height header,
-            .full-height header .view,
-            .full-height body .view {
-                height: 700px; 
-            } 
-        }
-        
-        @media (min-width: 1000px) and (max-width: 1025px) {
-            .full-height,
-            .full-height body,
-            .full-height header,
-            .full-height header .view,
-            .full-height body .view {
-                height: 770px; 
-            } 
-        }
-        
         .navbar {
-            background-color: transparent;
+            background-color:  #1C2331;
         }
-        
-        .scrolling-navbar {
-            -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
-            -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
-            transition: background .5s ease-in-out, padding .5s ease-in-out;
-        }
-        
-        .top-nav-collapse {
-            background-color: #1C2331;
-        }
-        
-        footer.page-footer {
-            background-color: #1C2331;
-            margin-top: 0;
-        }
-        
-        @media only screen and (max-width: 768px) {
-            .navbar {
-                background-color: #1C2331;
-            }
-        }
-        /* Carousel*/
-        
-        .flex-center {
-            color: #fff;
-        }
-        
-        .carousel-caption {
-            height: 100%;
-            padding-top: 7rem;
-        }
-        .navbar .btn-group .dropdown-menu a:hover {
-            color: #000 !important;
-        }
-        .navbar .btn-group .dropdown-menu a:active {
-            color: #fff !important;
         }
     </style>
 </head>
 <body>
-	<nav class='navbar navbar-default'>
-            <div class='container-fluid'>
-                <div class='navbar-header'>
+	<nav class='navbar navbar-dark'>
+            <div class='container'>
+                <!-- <div class='navbar-header'> -->
                     <a class='navbar-brand'> <img alt='Brand' src='img/ghost.png'></a>
-                </div>
+                <!-- </div> -->
                 <ul class='nav navbar-nav'>
-                    <li class='active'>
+                    <li class='active nav-item'>
                         <a href='../index.html'> PROYECTO UT-8 JM_B <span class='sr-only'>(current)</span></a>
                     </li>
-                    <li><a href='lista.php'>LISTA PLAYAS</a></li>
-					<li><a href='altaplaya2.php'>ALTA PLAYA </a></li>
+                    <li class="nav-item"><a href='lista.php'>LISTA PLAYAS</a></li>
+					<li class="nav-item"><a href='altaplaya2.php'>ALTA PLAYA </a></li>
                 </ul>
             </div>
     </nav>
@@ -122,9 +56,9 @@ include_once('./crud/playa.php');
 				$mensaje = $e->getMessage();
 		}
 	?>
-	<div id="encabezado">
+	<!-- <div id="encabezado">
 		<h1>DETALLE PLAYA</h1>
-	</div>
+	</div> -->
 	
 	<?php
 		
@@ -137,18 +71,6 @@ include_once('./crud/playa.php');
 				inner join municipio on municipio.idMunicipio = playas.idMun 
 				WHERE playas.idPlaya='$detallePlaya'
 SQL;
-/*select `idPlaya`,`idMun`,`nombre`,`descripcion`,`direccion`,`playaSize`,`longitud`,
-`latitud`,`imagen`,municipio.nombreMun 
-from playas 
-inner join municipio on municipio.idMunicipio = playas.idMun 
-where idPlaya = 1178 */
-
-
-// SELECT playas.*
-// FROM playas INNER JOIN municipio ON municipio.idMunicipio = playas.idMun
-// WHERE playas.idMun='$idSelect'
-// $sql = 'SELECT cod,nombre, nombre_corto, descripcion, PVP, familia FROM producto
-// WHERE producto.cod="$idSelect' SQL' ;
 			$resultado = $dwes->query($sql);
 		
 
@@ -156,14 +78,6 @@ where idPlaya = 1178 */
 			
 				$row = $resultado->fetch();
 				
-
-				
-				// $codigoE=$row['cod'];
-				// $nombre=$row['nombre'];
-				// $nombre_corto=$row['nombre_corto'];
-				// $descripcion=$row['descripcion'];
-				// $pvp=$row['PVP'];
-				// $familia=$row['familia'];
 				$idPlaya=$row['idPlaya'];
                 $idMun=$row['idMun'];
                 $nombre=$row['nombre'];
@@ -172,55 +86,52 @@ where idPlaya = 1178 */
 				$playaSize=$row['playaSize'];								
 				$longitud=$row['longitud'];			
 				$latitud=$row['latitud'];				
-				$imagen=$row['imagen'];
+                $imagen=$row['imagen'];
+                if($imagen==null){
+                    $imagen="./img/ghost.png";
+                }
 				$nombreMun=$row['nombreMun'];
 
 				echo"	<div id='contenido' class='container container-fluid'>
 				<h2>PLAYA SELECCIONADA: $nombre</h2>";
 
-				echo "<div class='panel'>
+				echo "<div >
 				<form id='form_edit' action='actualizar.php' method='post'>";
 
 				echo ' 	
-			<div class="row">
-				<div class="col-md-6 ">
-				  <div class="thumbnail">
-					<img src="data:image/jpeg;base64,'.base64_encode($imagen).'" style="width="50px; height="50px;" 
-					alt='.$nombre.'>
-						<div class="caption">
-							<h3>'.$nombre.'</h3>
-							<span class="badge">'.$idPlaya.'</span>
-						 <p><h4>Municipio :<span class="label label-default">' .$nombreMun. '</span></h4></p> 
-						 <p><h4>Direccion:<span class="label label-default">' .$direccion. '</span></h4></p> 
-						 <p>Tamaño:<span class="label label-default">' .$playaSize.' </span></p> 
-							<textarea name="descripcion" rows="10" cols="60" >'.$descripcion.'</textarea>
-							<p><a href="lista.php" class="btn btn-primary" role="button" type="submit">Atras</a> 
-							</p>
-						</div>
-				  </div>
-				</div>
-				<div class="col-md-6">
-					<div id="map"style="width:100%;height:500px" ></div>	
-				</div>
-			</div> 
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="thumbnail">
+                            <img src="data:image/jpeg;base64,'.base64_encode($imagen).'" style="width="50px; height="50px;" alt='.$nombre.'>
+                                <div class="caption">
+                                    <h3>'.$nombre.'</h3>						
+                                    <p><h4>Municipio :<span class="textos">' .$nombreMun. '</span></h4></p> 
+                                    <p><h4>Direccion:<span class="textos">' .$direccion. '</span></h4></p> 
+                                    <p>Tamaño:<span class="textos" >' .$playaSize.' </span></p> 
+                                    <p>Descripción:</p> 
+                                    <textarea name="descripcion" rows="20" cols="60" maxlength="100"  readonly>'.$descripcion.'</textarea>
 
-			<div class="row">
-				<div class="col-md-6">
-					<div id="map"style="width:100%;height:500px" ></div>	
-				</div>
-			</div>
-			';
-			  
+                                    <p><a href="lista.php" class="btn btn-primary" role="button" type="submit">Atras</a> 
+                                    </p>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="map"style="width:100%;height:500px" ></div>	
+                    </div>
+                    
+                </div> 
 
-				echo "</form></div>";
-
-				
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="map"style="width:100%;height:500px" ></div>	
+                    </div>
+                </div>';	
+                
+// <span class="badge">'.$idPlaya.'</span>
+				echo "</form></div>";	
 			}
-
-		}
-
-		
-
+		}		
 	?>
 <!-- nombrePlaya -->
 	</div>
