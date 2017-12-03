@@ -10,14 +10,16 @@
     <!-- Bootstrap core CSS -->
     <link href="css/old/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+
     <!-- Material Design Bootstrap -->
-    <!-- <link href="css/mdb.min.css" rel="stylesheet"> -->
+    <link href="css/mdb.min.css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="css/old/style.css">
     <link rel="stylesheet" type="text/css" href="css/dwes.css">
 
-     <!-- Material Design Bootstrap -->
-     <!-- <link href="css/mdb.min.css" rel="stylesheet"> -->
+   
     <!-- Latest compiled and minified JavaScript -->
     <!-- <script src="js/jquery.min.js"></script> -->
     <!-- <script src="js/bootstrap.min.js"></script> -->
@@ -67,11 +69,11 @@
     </nav>
 
 <div class="container container-fluid" >
-    <h1  class="panel panel-primary">Listado de playas</h1>
+    <h1  class="">Listado de playas</h1>
     <!-- <div>  -->
     <form id="form" name="formulario" action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
-        <div class="panel panel-info tn-group">       
+        <div class="">       
             <div class="row">
                 <div class="col-md-4">
                     <h3 style="padding: 2% !important;">Seleccione un Municipio</h3>
@@ -185,10 +187,10 @@ SQL;
  
 ?>   
 </div>
-
+<!-- class="page-footer center-on-small-only well well-smtext-primary" -->
     <br><div class="spacio"></div>
-    <footer class="page-footer center-on-small-only">
-        <div class="well well-sm footer-info text-primary">
+    <footer >
+        <div class=" footer-info ">
             <p>DWE 2017-UT8 JM_Banchero</p>
         </div>
     </footer>
