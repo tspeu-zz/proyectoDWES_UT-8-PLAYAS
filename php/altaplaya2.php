@@ -130,10 +130,6 @@
                      $stmt->execute();
                      echo "<h2><span class='label label-success'>Los datos han Sido insertado con éxito!</span></h2>";
                      limpiarForm();
-                    //  echo "<h2>DATOS PLAYA:</h2>";
-                    //  echo "id:$idPlaya | idMUN:$idMun|NomPlaya:$nombrePlaya|tamañoPla: $tamañoPlaya<br>";
-                    //  echo "direc: $direccionPlaya|Desc:$descripcionPlaya<br>";
-                    //  echo "Lat: $latitudPlaya||Long:$longitudPlaya||Imagen: $imagenPlaya";
                 }
                 
                 unset($dwes);
