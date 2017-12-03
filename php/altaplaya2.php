@@ -5,21 +5,28 @@
     <meta charset="UTF-8">
     <title> UT_8 DWES JM_Banchero</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+     <!-- Bootstrap core CSS -->
+    <link href="css/old/bootstrap.min.css" rel="stylesheet">
+      <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/dwes.css">
+
+
     <!-- Latest compiled and minified JavaScript -->
     <!-- <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script> -->
       <!-- JQuery -->
-      <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+      <!-- <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script> -->
 
     <!-- Bootstrap dropdown -->
-    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- <script type="text/javascript" src="js/popper.min.js"></script> -->
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
 
     <!-- MDB core JavaScript -->
     <!-- <script type="text/javascript" src="js/mdb.min.js"></script> -->
@@ -27,97 +34,28 @@
     <link type="image/x-icon" href="img/ghost.png" rel="shortcut icon" />
     <!-- Template styles -->
     <style rel="stylesheet">
-        /* TEMPLATE STYLES */
-        /* Necessary for full page carousel*/
-
-        .full-height,
-        .full-height body,
-        .full-height header,
-        .full-height header .view, 
-        .full-height body .view {
-            height: 100%; 
-        } 
-
-        @media (max-width: 740px) {
-            .full-height,
-            .full-height body,
-            .full-height header,
-            .full-height header .view,
-            .full-height body .view {
-                height: 700px; 
-            } 
-        }
-        
-        @media (min-width: 1000px) and (max-width: 1025px) {
-            .full-height,
-            .full-height body,
-            .full-height header,
-            .full-height header .view,
-            .full-height body .view {
-                height: 770px; 
-            } 
-        }
-        
         .navbar {
-            background-color: transparent;
-        }
-        
-        .scrolling-navbar {
-            -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
-            -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
-            transition: background .5s ease-in-out, padding .5s ease-in-out;
-        }
-        
-        .top-nav-collapse {
-            background-color: #1C2331;
-        }
-        
-        footer.page-footer {
-            background-color: #1C2331;
-            margin-top: 0;
-        }
-        
-        @media only screen and (max-width: 768px) {
-            .navbar {
-                background-color: #1C2331;
-            }
-        }
-        /* Carousel*/
-        
-        .flex-center {
-            color: #fff;
-        }
-        
-        .carousel-caption {
-            height: 100%;
-            padding-top: 7rem;
-        }
-        .navbar .btn-group .dropdown-menu a:hover {
-            color: #000 !important;
-        }
-        .navbar .btn-group .dropdown-menu a:active {
-            color: #fff !important;
+            background-color:  #1C2331;
         }
     </style>
 </head>
 
 <body >
-    <nav class='navbar navbar-default'>
-            <div class='container-fluid'>
-                <div class='navbar-header'>
+    <nav class='navbar navbar-dark'>
+            <div class='container'>
+                <!-- <div class='navbar-header'> -->
                     <a class='navbar-brand'> <img alt='Brand' src='img/ghost.png'></a>
-                </div>
+                <!-- </div> -->
                 <ul class='nav navbar-nav'>
-                    <li class='active'>
+                    <li class='nav-item active'>
                         <a href='../index.html'> PROYECTO UT-8 JM_B  <span class='sr-only'>(current)</span></a>
                     </li>
-                    <li><a href='lista.php'>LISTA PLAYAS</a></li>
-                    <li><a href='altaplaya2.php'>ALTA PLAYA</a> 
-                    </li>
+                    <li class="nav-item"><a href='lista.php'>LISTA PLAYAS</a></li>
+                    <li class="nav-item"><a href='altaplaya2.php'>ALTA PLAYA</a></li>
                 </ul>
             </div>
     </nav>
-<div class="container">    
+<div class="container container-fluid">    
 
         
 <?php
@@ -154,8 +92,8 @@
                 $descripcionPlaya = test_input($_POST["descripcion"]);
                 $latitudPlaya = inputParseFloat($_POST["latitud"]);
                 $longitudPlaya = inputParseFloat($_POST["longitud"]);
-                // $imagenPlaya = test_input($_POST["imagen"]);
-                $imagenPlaya = uploadImage($_POST["imagen"]);
+                $imagenPlaya = test_input($_POST["imagen"]);
+                // $imagenPlaya = uploadImage($_POST["imagen"]);
                 
 
                 // $dwes->beginTransaction();        
@@ -185,27 +123,19 @@
 // , PDO::PARAM_STR, PDO::PARAM_STR
                 if(!$stmt){
                     // $dwes->rollback();
-                    echo "<h2><span class='label label-danger'>ERR: Los datos no han sido insertadps!</span></h2>";
+                    echo "<h2><span class='label label-danger'>ERR: Los datos no han sido insertados!</span></h2>";
                     $this->mensaje="error al crear registro";
                 }else{
                      // $dwes->commit();
                      $stmt->execute();
-                     echo "<h2><span class='label label-success'>Los datos han ido insertado con éxito!</span></h2>";
-                     echo "<h2>DATOS PLAYA:</h2>";
-                     echo "id:$idPlaya | idMUN:$idMun|NomPlaya:$nombrePlaya|tamañoPla: $tamañoPlaya<br>";
-                     echo "direc: $direccionPlaya|Desc:$descripcionPlaya<br>";
-                     echo "Lat: $latitudPlaya||Long:$longitudPlaya||Imagen: $imagenPlaya";
+                     echo "<h2><span class='label label-success'>Los datos han Sido insertado con éxito!</span></h2>";
+                     limpiarForm();
+                    //  echo "<h2>DATOS PLAYA:</h2>";
+                    //  echo "id:$idPlaya | idMUN:$idMun|NomPlaya:$nombrePlaya|tamañoPla: $tamañoPlaya<br>";
+                    //  echo "direc: $direccionPlaya|Desc:$descripcionPlaya<br>";
+                    //  echo "Lat: $latitudPlaya||Long:$longitudPlaya||Imagen: $imagenPlaya";
                 }
                 
-                // if(!$consulta)
-                // {
-                //     $this->mensaje="error al crear registro";
-                // }else{
-                //     $consulta->execute();
-                //     $this->mensaje="resgistro creado ok";
-                // }
-                // $stmt->close();
-                // $dwes->close();
                 unset($dwes);
             }
 
@@ -238,59 +168,65 @@ $float = (float)$num; */
         $data=(float)$data;
         return $data;
     }
-    function uploadImage($imagenPlaya){
-        $imagenPlaya = $_FILES['file']['name'];
-        $extension = strtolower(substr($imagenPlaya, strpos($imagenPlaya, '.') + 1));
-        $tmp_name = $_FILES['file']['tmp_name'];
-        $type = $_FILES['file']['type'];
-        $size = $_FILES['file']['size'];
-        $max_size = 10000000;
-        $expensions= array("jpeg","jpg","png");
+
+    function limpiarForm(){
+        $idPlaya= "";
+        $idMun = "";
+        $nombrePlaya ="";
+        $tamañoPlaya ="" ;
+        $direccionPlaya ="";
+        $descripcionPlaya ="";
+        $latitudPlaya = "";
+        $longitudPlaya = "";
+        $imagenPlaya = "";
+    }
+    // function uploadImage($imagenPlaya){
+    //     $imagenPlaya = $_FILES['file']['name'];
+    //     $extension = strtolower(substr($imagenPlaya, strpos($imagenPlaya, '.') + 1));
+    //     $tmp_name = $_FILES['file']['tmp_name'];
+    //     $type = $_FILES['file']['type'];
+    //     $size = $_FILES['file']['size'];
+    //     $max_size = 10000000;
+    //     $expensions= array("jpeg","jpg","png");
 
         // if(isset($name)){
             
-            if(!empty($imagenPlaya)){
+            // if(!empty($imagenPlaya)){
                   
-                if(($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png')&& $type == 'image/jpeg' && $size <= $max_size){
+            //     if(($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png')&& $type == 'image/jpeg' && $size <= $max_size){
                     
                 // Image submitted by form. Open it for reading (mode "r")
-                    $fp = fopen($_FILES['file']['tmp_name'], "r");
-                    
+                    // $fp = fopen($_FILES['file']['tmp_name'], "r");
+                    // 
                     // If successful, read from the file pointer using the size of the file (in bytes) as the length.
-                    if ($fp) {
-                        $content = fread($fp, $_FILES['file']['size']);
-                        fclose($fp);
+            //         if ($fp) {
+            //             $content = fread($fp, $_FILES['file']['size']);
+            //             fclose($fp);
                     
-                        // Add slashes to the content so that it will escape special characters.
-                        // As pointed out, mysql_real_escape_string can be used here as well. Your choice.
-                        $content = addslashes($content);
-                        $content= mysqli_real_escape_string($cxn, $content);
-                        $imagenPlaya= mysqli_real_escape_string($cxn, $imagenPlaya);
-                        // Insert into the table "table" for column "image" with our binary string of data ("content")
-                        // mysqli_query($cxn,"INSERT INTO uploaded (file_id, name, type, size, image, email) Values('','$name','$type', '$size','$content','goro@yahoo.com')") or 
-                        // die("Couldn't execute query in your database!".mysqli_error($cxn));
-                        
-                        // echo 'Data-File was inserted into the database!|';
-                        // echo '<a href="showImages.php?id=1">view</a>';
-                    }
+         
+            //             $content = addslashes($content);
+            //             $content= mysqli_real_escape_string($cxn, $content);
+            //             $imagenPlaya= mysqli_real_escape_string($cxn, $imagenPlaya);
+ 
+            //         }
                     
-                    else{
-                    echo 'There was an error!';
-                    }
-                }
-                else{
-                echo 'File must be jpg/jpeg and must be 73 kilobyte or less! ';
-                }
+            //         else{
+            //         echo 'There was an error!';
+            //         }
+            //     }
+            //     else{
+            //     echo 'File must be jpg/jpeg and must be 73 kilobyte or less! ';
+            //     }
             
-            }
-            
-              else {
-              echo 'Please select a file!';
-            
-            }
             // }
-        return $name;    
-    }
+            
+            //   else {
+            //   echo 'Please select a file!';
+            
+            // }
+            // }
+        // return $imagenPlaya;    
+    // }
     function upload() {
     
         $maxsize = 10000000; //set to approx 10 MB
@@ -449,11 +385,13 @@ $float = (float)$num; */
                 </div>
             </div>
             <div class="col-md-6">   
-                <div class="input-group input-group-lg">             
-                <input type="text" name="nombre" value="<?php echo $nombrePlaya;?>">
-                <span class="label label-danger input-group-addon">* <?php echo $nameErr;?></span>
+                <div class="input-group input-group-lg" style="width: 80% !important;">             
+                <input type="text" name="nombre" value="<?php echo $nombrePlaya;?>" required>
                 </div>
             </div>
+            <div class="col-md-3"> 
+            <span class="label label-danger input-group-addon">* <?php echo $nameErr;?></span>
+            </div>            
         </div>
             
 
@@ -464,7 +402,7 @@ $float = (float)$num; */
                 </div>
             </div>
             <div class="col-md-6">   
-                <div class="input-group input-group-lg">              
+                <div class="input-group input-group-lg"  style="width: 80% !important;">              
                     <input type="text" name="tamaño" value="<?php echo $tamañoPlaya;?>">
                 </div>
             </div>
@@ -478,7 +416,7 @@ $float = (float)$num; */
                 </div>
             </div>
             <div class="col-md-6"> 
-                <div class="input-group input-group-lg">       
+                <div class="input-group input-group-lg"  style="width: 80% !important;">       
                     <input type="text" name="direccion" value="<?php echo $direccionPlaya;?>">
                 </div>
             </div>
@@ -504,7 +442,7 @@ $float = (float)$num; */
             </div>
             <div class="col-md-6">
                 <div class="input-group input-group-lg">              
-                <input type="text" name="latitud" value="<?php echo $latitudPlaya;?>"> 
+                <input type="number" name="latitud" value="<?php echo $latitudPlaya;?>"> 
                 </div>
             </div>
         </div>  
@@ -517,14 +455,14 @@ $float = (float)$num; */
             </div>
             <div class="col-md-6"> 
                 <div class="input-group input-group-lg">     
-                    <input type="text" name="longitud" value="<?php echo $longitudPlaya;?>">
+                    <input type="number" name="longitud" value="<?php echo $longitudPlaya;?>">
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-3"> 
-                <span class="input-group-addon"  id="basic-addon1"> IMAGEN?¿?¿:</span> 
+                <span class="input-group-addon"  id="basic-addon1"> IMAGEN:</span> 
             </div>
             <div class="col-md-6"> 
                 <input type="file" name="imagen" value="<?php echo $imagenPlaya;?>">
@@ -533,8 +471,9 @@ $float = (float)$num; */
         </div>
 <br>
         <div class="row">
-            <div class="col-md-6">                
-                <button type="submit" name="submit" value="Submit" class="btn btn-lg btn-success">enviar</button> 
+            <div class="col-md-12">                
+                <button type="submit" name="submit" value="Submit" class="btn parrafo btn-lg btn-success" 
+                style="width: 100% !important;height: 100%; !important;">enviar</button> 
             </div>
         </div> 
         </form>
@@ -542,13 +481,7 @@ $float = (float)$num; */
   </div>
 </div>
 
-
-
-
-
 </div>
-
-
 
     <br><div class="spacio"></div>
     <div class="well well-sm footer-info text-primary">
@@ -556,7 +489,3 @@ $float = (float)$num; */
     </div>
 </body>
 </html>
-<!--  style=" width: 100% !important;
-                        height: 100% !important;padding: 8% !important;
-                        font-size: 18px;text-align: center !important;
-                        background-color: #EEEEEE;" -->

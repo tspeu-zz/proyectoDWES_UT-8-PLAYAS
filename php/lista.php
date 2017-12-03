@@ -47,7 +47,7 @@
 
 <body >
     <!-- <nav class='navbar navbar-default'>  fixed-top fixed-top scrolling-navbar navbar-expand-lg  scrolling-navbar fixed-top-->
-    <nav class="navbar navbar-dark ">
+    <nav class="navbar navbar-dark">
         <div class='container'>
             <!-- <div class='navbar-header'> -->
             <a class='navbar-brand'> <img alt='Brand' src='img/ghost.png'></a>
