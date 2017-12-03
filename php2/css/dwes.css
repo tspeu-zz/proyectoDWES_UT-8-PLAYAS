@@ -1,0 +1,29 @@
+h1 {
+    margin-bottom: 0;
+}
+
+#encabezado {
+    background-color: #ddf0a4;
+}
+
+#contenido {
+    background-color: #EEEEEE;
+    height: 600px;
+}
+
+#pie {
+    background-color: #ddf0a4;
+    color: #ff0000;
+    height: 30px;
+}
+
+.sel {
+    width: 200px !important;
+    height: 200px !important;
+    padding: 5% !important;
+    ;
+    text-align: center !important;
+    ;
+    font-family: 'Open Sans Condensed', sans-serif !important;
+    ;
+}
